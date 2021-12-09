@@ -1,0 +1,29 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.1'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.github.aspatsalyuk'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+ext {
+	springBootVersion = '2.6.1'
+	springSecurityVersion = '5.5.1'
+}
+repositories {
+	mavenCentral()
+}
+dependencies {
+	implementation "org.springframework.boot:spring-boot-starter-security:${springBootVersion}"
+	implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+	testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}") {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation "org.springframework.security:spring-security-test:${springSecurityVersion}"
+}
+
+test {
+	useJUnitPlatform()
+}
